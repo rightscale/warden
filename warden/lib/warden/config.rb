@@ -50,6 +50,7 @@ module Warden
             optional("nproc")      => Integer,
             optional("rss")        => Integer,
             optional("rtprio")     => Integer,
+            optional("rttime")     => Integer,
             optional("sigpending") => Integer,
             optional("stack")      => Integer,
           },

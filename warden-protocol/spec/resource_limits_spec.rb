@@ -72,6 +72,11 @@ describe Warden::Protocol::ResourceLimits do
     it_should_be_typed_as_uint64
   end
 
+  field :rttime do
+    it_should_be_optional
+    it_should_be_typed_as_uint64
+  end
+
   field :sigpending do
     it_should_be_optional
     it_should_be_typed_as_uint64

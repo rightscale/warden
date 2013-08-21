@@ -413,6 +413,7 @@ module Warden
       optional :rtprio, :uint64, 13
       optional :sigpending, :uint64, 14
       optional :stack, :uint64, 15
+      optional :rttime, :uint64, 16
 
     end
 
