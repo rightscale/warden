@@ -16,7 +16,7 @@ ln -sf pts/ptmx /dev/ptmx
 mkdir -p /proc
 mount -t proc none /proc
 
-hostname $id
+hostname $(echo $id | rev)
 
 ifconfig lo 127.0.0.1
 ifconfig $network_container_iface $network_container_ip netmask $network_netmask
