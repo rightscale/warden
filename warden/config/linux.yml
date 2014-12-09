@@ -13,23 +13,25 @@ server:
   # The grace time can be disabled by setting it to nil:
   #   container_grace_time: ~
   #
-  container_grace_time: 300
+  container_grace_time: @@CONTAINER_GRACE_TIME@@
 
-  unix_domain_permissions: 0777
+  unix_domain_permissions: 0666
+
+  unix_domain_owner: @@APPLICATION_OWNER@@
 
   # Specifies the path to the base chroot used as the read-only root
   # filesystem
-  container_rootfs_path: /tmp/warden/rootfs
+  container_rootfs_path: @@WARDEN_ROOTFS_PATH@@
 
   # Specifies the path to the parent directory under which all containers
   # will live.
-  container_depot_path: /tmp/warden/containers
+  container_depot_path: @@WARDEN_CONTAINER_PATH@@
 
   # See getrlimit(2) for details. Integer values are passed verbatim.
   container_rlimits:
-    as: 4294967296
-    nofile: 8192
-    nproc: 512
+    as: @@WARDEN_CONTAINER_MEM_SIZE@@
+    #nofile: 8192
+    #nproc: 512
 
   # Specifies the output limit of a job (stdout/stderr combined).
   job_output_limit: 10485760
@@ -41,7 +43,9 @@ health_check_server:
   port: 2345
 
 logging:
-  level: debug2
+  file: /var/log/warden.log
+  syslog: warden
+  level: all
 
 network:
   # Use this /30 network as offset for the network pool.
